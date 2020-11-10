@@ -19,7 +19,7 @@ def followers(username):
     start += len(token)
     end = r.text.find('"}',start)
     followers = r.text[start:end]
-    path = "/requests.txt"
+    path = "requests.txt"
     return send_file(path, as_attachment=True)
     #return followers
 
