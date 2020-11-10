@@ -6,6 +6,10 @@ app = Flask(__name__)
 def safe_string(string):
     return ''.join([c for c in string if c.isalnum() or c in ['.','-','_']])
 
+@app.route('/privacy')
+def site_privacy():
+    return '<html><body>Política de privacidad</body></html>'
+
 @app.route('/api/followers/<username>')
 def followers(username):
     username = safe_string(username)
