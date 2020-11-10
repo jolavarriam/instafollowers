@@ -10,10 +10,13 @@ def safe_string(string):
 def followers(username):
     username = safe_string(username)
     r = requests.get('https://instagram.com/'+username)
-    token = '"edge_followed_by":{"count":'
+    #text_file = open("requests.txt", "wb")
+    #text_file.write(r.content)
+    #text_file.close()
+    token = '"userInteractionCount":"'
     start = r.text.find(token) 
     start += len(token)
-    end = r.text.find('}',start)
+    end = r.text.find('"}',start)
     followers = r.text[start:end]
     return followers
 
@@ -26,13 +29,14 @@ def picture(username):
     start += len(token)
     end = r.text.find('",', start)
     profile_url = r.text[start:end].replace("\\u0026", "&")
+    #print(profile_url)
     return profile_url
 
 @app.route('/<username>')
 def index(username):
     username = safe_string(username)
-    return followers(username) 
-    #render_template('index.html', username=username, followers=followers(username), picture=picture(username))
+    #return followers(username) 
+    return render_template('index.html', username=username, followers=followers(username), picture=picture(username))
 
 @app.route('/')
 def default_index():
