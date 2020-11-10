@@ -9,7 +9,8 @@ def safe_string(string):
 @app.route('/api/followers/<username>')
 def followers(username):
     username = safe_string(username)
-    r = requests.get('https://instagram.com/'+username)
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+    r = requests.get('https://instagram.com/'+username, headers=headers)
     text_file = open("requests.txt", "wb")
     text_file.write(r.content)
     text_file.close()
