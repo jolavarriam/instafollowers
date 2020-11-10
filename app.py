@@ -13,12 +13,12 @@ def followers(username):
     text_file = open("requests.txt", "wb")
     text_file.write(r.content)
     text_file.close()
-    print(r)
-    token = '"userInteractionCount":"'
-    start = r.text.find(token) 
-    start += len(token)
-    end = r.text.find('"}',start)
-    followers = r.text[start:end]
+    #print(r)
+    #token = '"userInteractionCount":"'
+    #start = r.text.find(token) 
+    #start += len(token)
+    #end = r.text.find('"}',start)
+    #followers = r.text[start:end]
     path = "requests.txt"
     return send_file(path, as_attachment=True)
     #return followers
