@@ -8,9 +8,8 @@ def safe_string(string):
 
 @app.route('/api/followers/<username>')
 def followers(username):
-    username = safe_string(username)
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-    r = requests.get('https://instagram.com/'+username, headers=headers)
+    username = safe_string(username)https://www.instagram.com/julieta.allegretti/?__a=1
+    r = requests.get('https://instagram.com/'+username+'?__a=1', headers=headers)
     text_file = open("requests.txt", "wb")
     text_file.write(r.content)
     text_file.close()
@@ -27,7 +26,7 @@ def followers(username):
 @app.route('/api/picture/<username>')
 def picture(username):
     username = safe_string(username)
-    r = requests.get('https://instagram.com/'+username)
+    r = requests.get('https://instagram.com/'+username+'?__a=1')
     token = 'profile_pic_url":"'
     start = r.text.find(token) 
     start += len(token)
