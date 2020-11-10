@@ -8,7 +8,7 @@ def safe_string(string):
 
 @app.route('/api/followers/<username>')
 def followers(username):
-    username = safe_string(username)https://www.instagram.com/julieta.allegretti/?__a=1
+    username = safe_string(username)
     r = requests.get('https://instagram.com/'+username+'?__a=1', headers=headers)
     text_file = open("requests.txt", "wb")
     text_file.write(r.content)
