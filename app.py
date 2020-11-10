@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 import requests
 
 app = Flask(__name__)
@@ -10,16 +10,18 @@ def safe_string(string):
 def followers(username):
     username = safe_string(username)
     r = requests.get('https://instagram.com/'+username)
-    #text_file = open("requests.txt", "wb")
-    #text_file.write(r.content)
-    #text_file.close()
+    text_file = open("requests.txt", "wb")
+    text_file.write(r.content)
+    text_file.close()
     print(r)
     token = '"userInteractionCount":"'
     start = r.text.find(token) 
     start += len(token)
     end = r.text.find('"}',start)
     followers = r.text[start:end]
-    return followers
+    path = "/requests.txt"
+    return send_file(path, as_attachment=True)
+    #return followers
 
 @app.route('/api/picture/<username>')
 def picture(username):
