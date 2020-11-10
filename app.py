@@ -38,8 +38,8 @@ def picture(username):
 @app.route('/<username>')
 def index(username):
     username = safe_string(username)
-    #return followers(username) 
-    return render_template('index.html', username=username, followers=followers(username), picture=picture(username))
+    return followers(username) 
+    #return render_template('index.html', username=username, followers=followers(username), picture=picture(username))
 
 @app.route('/')
 def default_index():
