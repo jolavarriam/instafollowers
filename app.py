@@ -13,6 +13,7 @@ def followers(username):
     #text_file = open("requests.txt", "wb")
     #text_file.write(r.content)
     #text_file.close()
+    print(r)
     token = '"userInteractionCount":"'
     start = r.text.find(token) 
     start += len(token)
