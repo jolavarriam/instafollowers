@@ -39,7 +39,7 @@ def default_index():
 
 @app.route('/privacy')
 def site_privacy():
-    return 200
+    return 'Política de privacidad'
 
 if __name__ == '__main__':
     app.run(debug = True, port=80)
